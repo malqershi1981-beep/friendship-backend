@@ -4,13 +4,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "npm run vite-build",
-    "vite-build": "vite build",
-    "dev": "vite --host 0.0.0.0 --port 5173",
-    "preview": "vite preview --host 0.0.0.0 --port 5173",
-    "api": "node server/index.js",
-    "start": "npm run api",
-    "typecheck": "tsc --noEmit"
+  "build": "node ./node_modules/vite/bin/vite.js build",
+  "dev": "vite --host 0.0.0.0 --port 5173",
+  "preview": "vite preview --host 0.0.0.0 --port 5173",
+  "api": "node server/index.js",
+  "start": "npm run api",
+  "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
