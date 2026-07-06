@@ -36,7 +36,7 @@ server: {
   port: 5173,
   proxy: {
     "/api": {
-      target: "http://192.168.1.20:4000", // ✅ استخدم IP جهازك
+      target: "VITE_API_URL=https://friendship-backend-1cuf.onrender.com", // ✅ استخدم IP جهازك
       changeOrigin: true,
     },
   },
