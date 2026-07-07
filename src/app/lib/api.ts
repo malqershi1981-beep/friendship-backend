@@ -158,10 +158,10 @@ export type ApiCategory = {
 // Default to an empty string so browser requests use the same origin
 // and Vite's dev server proxy (configured in `vite.config.ts`) can forward
 // `/api` calls to the backend. Set `VITE_API_URL` to override.
-const apiBase = envApiUrl;
+const apiBase =
+  envApiUrl || "https://friendship-backend-1cuf.onrender.com";
 
-console.log("API BASE =", apiBase || "(relative /api)");
-
+console.log("API BASE =", apiBase);
 async function fetchJson<T>(url: string, opts: RequestInit = {}): Promise<T> {
   const response = await fetch(`${apiBase}${url}`, {
     headers: {
