@@ -555,20 +555,35 @@ app.post("/api/orders", (req, res) => {
           <p>Thank you for your ${order.isQuotation ? 'quotation request' : 'order'}.</p>
         </div>
       `;
+      console.log("=== START SENDING EMAIL ===");
+console.log("Order ID:", order.id);
+console.log("To:", to);
+console.log("Subject:", subject);
+console.log("From:", from);
 
-      const info = await mailTransporter.sendMail({ from, to, subject, text, html, replyTo: process.env.SMTP_USER || from });
-      // Log transport response details for debugging (messageId, accepted/rejected, raw response)
-      try {
-        console.log('SMTP send info:', {
-          messageId: info.messageId,
-          accepted: info.accepted,
-          rejected: info.rejected,
-          response: info.response,
-          envelope: info.envelope,
-        });
-      } catch (e) {
-        console.log('Could not parse SMTP send info', e);
-      }
+const info = await mailTransporter.sendMail({
+  from,
+  to,
+  subject,
+  text,
+  html,
+  replyTo: process.env.SMTP_USER || from,
+});
+
+console.log("=== EMAIL SENT SUCCESSFULLY ===");
+
+// Log transport response details for debugging
+try {
+  console.log("SMTP send info:", {
+    messageId: info.messageId,
+    accepted: info.accepted,
+    rejected: info.rejected,
+    response: info.response,
+    envelope: info.envelope,
+  });
+} catch (e) {
+  console.log("Could not parse SMTP send info", e);
+}
 
       // If using Ethereal, log preview URL
       try {
