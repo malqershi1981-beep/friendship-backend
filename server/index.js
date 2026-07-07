@@ -39,7 +39,10 @@ await (async () => {
       if (authUser && authPass) transporterConfig.auth = { user: authUser, pass: authPass };
       mailTransporter = nodemailer.createTransport(transporterConfig);
       // verify connection
-      await mailTransporter.verify();
+      //await mailTransporter.verify();
+      mailTransporter = nodemailer.createTransport(transporterConfig);
+
+      console.log("SMTP transporter created");
       console.log("SMTP transporter ready");
     } else {
       const testAccount = await nodemailer.createTestAccount();

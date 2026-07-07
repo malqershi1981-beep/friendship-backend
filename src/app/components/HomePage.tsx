@@ -388,7 +388,7 @@ const handleSuggestionSubmit = async (e: React.FormEvent) => {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {visibleReviews.slice(0, 3).map(r => (
+            {visibleReviews.slice(0, 6).map(r => (
               <div key={r.id} className="bg-white p-6 rounded-3xl shadow-sm border border-border relative">
                 <div className="absolute top-5 right-5 text-4xl opacity-10 font-serif">"</div>
                 <div className="flex gap-1 mb-3">

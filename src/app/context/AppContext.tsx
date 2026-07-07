@@ -99,48 +99,26 @@ export interface StaffUser {
 }
 
 const initialCategories: Category[] = [
-  { id: "stationery", nameAr: "القرطاسية", nameEn: "Stationery", icon: "📝", descAr: "أدوات مكتبية متنوعة وعالية الجودة", descEn: "Diverse high-quality office supplies" },
-  { id: "computers", nameAr: "الكمبيوترات ومستلزماتها", nameEn: "Computers & Accessories", icon: "💻", descAr: "أحدث الأجهزة والمستلزمات الإلكترونية", descEn: "Latest devices and electronics" },
-  { id: "banking", nameAr: "خدمات البنوك", nameEn: "Banking Services", icon: "🏦", descAr: "خدمات مالية وبنكية متكاملة", descEn: "Comprehensive banking & financial services" },
-];
+  ];
 
 const initialProducts: Product[] = [
-  { id: "p1", nameAr: "دفتر أوراق A4", nameEn: "A4 Notebook", descAr: "دفتر مسطر عالي الجودة", descEn: "High quality ruled notebook", price: 2.50, category: "stationery", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop&auto=format", stock: 500, available: true },
-  { id: "p2", nameAr: "أقلام حبر جاف (علبة 12)", nameEn: "Ballpoint Pens (Box 12)", descAr: "أقلام حبر جاف زرقاء عالية الجودة", descEn: "Blue ballpoint pens, pack of 12", price: 3.00, category: "stationery", image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop&auto=format", stock: 1000, available: true },
-  { id: "p3", nameAr: "ورق طباعة A4 (رزمة)", nameEn: "A4 Printing Paper (Ream)", descAr: "ورق طباعة أبيض 80 جرام", descEn: "White printing paper 80gsm", price: 8.00, category: "stationery", image: "https://images.unsplash.com/photo-1568667256549-094345857637?w=400&h=300&fit=crop&auto=format", stock: 200, available: true },
-  { id: "p4", nameAr: "ملفات تجميع", nameEn: "Filing Folders", descAr: "ملفات بلاستيكية متعددة الألوان", descEn: "Colorful plastic folders", price: 1.50, category: "stationery", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&auto=format", stock: 300, available: true },
-  { id: "p5", nameAr: "لاب توب أعمال", nameEn: "Business Laptop", descAr: "لاب توب للأعمال بمعالج i7 وذاكرة 16GB", descEn: "Business laptop, i7 processor, 16GB RAM", price: 850.00, category: "computers", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format", stock: 15, available: true },
-  { id: "p6", nameAr: "طابعة ليزر", nameEn: "Laser Printer", descAr: "طابعة ليزر أحادية عالية السرعة", descEn: "High-speed monochrome laser printer", price: 320.00, category: "computers", image: "https://images.unsplash.com/photo-1612815292170-e0ca0e4ccf38?w=400&h=300&fit=crop&auto=format", stock: 8, available: true },
-  { id: "p7", nameAr: "شاشة كمبيوتر 24\"", nameEn: "24\" Monitor", descAr: "شاشة FHD مناسبة للمكاتب", descEn: "FHD office monitor", price: 180.00, category: "computers", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop&auto=format", stock: 20, available: true },
-  { id: "p8", nameAr: "ماوس ولوحة مفاتيح لاسلكي", nameEn: "Wireless Mouse & Keyboard", descAr: "طقم ماوس ولوحة مفاتيح لاسلكية", descEn: "Wireless mouse and keyboard combo", price: 45.00, category: "computers", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop&auto=format", stock: 50, available: true },
-  { id: "p9", nameAr: "خدمة تحصيل فواتير", nameEn: "Bill Collection Service", descAr: "خدمة تحصيل وسداد فواتير البنوك", descEn: "Bank bill collection and payment service", price: 5.00, category: "banking", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&auto=format", stock: 9999, available: true },
-  { id: "p10", nameAr: "خدمة تحويل مالي", nameEn: "Money Transfer Service", descAr: "خدمة التحويل المالي عبر البنوك", descEn: "Bank money transfer service", price: 10.00, category: "banking", image: "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=400&h=300&fit=crop&auto=format", stock: 9999, available: true },
+  
 ];
 
 const initialBanks: Bank[] = [
-  { id: "b1", nameAr: "بنك الخرطوم", nameEn: "Bank of Khartoum", accountNumber: "1234567890123", active: true },
-  { id: "b2", nameAr: "البنك الأهلي السوداني", nameEn: "National Bank of Sudan", accountNumber: "9876543210987", active: true },
-  { id: "b3", nameAr: "بنك فيصل الإسلامي", nameEn: "Faisal Islamic Bank", accountNumber: "1122334455667", active: false },
+  
 ];
 
 const initialEmployees: DeliveryEmployee[] = [
-  { id: "e1", nameAr: "أحمد محمد", nameEn: "Ahmed Mohammed", phone: "0912345678", active: true },
-  { id: "e2", nameAr: "خالد عمر", nameEn: "Khaled Omar", phone: "0923456789", active: true },
-  { id: "e3", nameAr: "يوسف إبراهيم", nameEn: "Yousef Ibrahim", phone: "0934567890", active: false },
+  
 ];
 
 const initialReviews: Review[] = [
-  { id: "r1", customerName: "محمد علي", rating: 5, comment: "خدمة ممتازة وتوصيل سريع جداً", type: "review", hidden: false, createdAt: new Date("2026-05-10") },
-  { id: "r2", customerName: "فاطمة حسن", rating: 4, comment: "منتجات ذات جودة عالية وأسعار مناسبة", type: "review", hidden: false, createdAt: new Date("2026-05-15") },
-  { id: "r3", customerName: "عمر الشيخ", rating: 3, comment: "التوصيل تأخر قليلاً لكن المنتجات ممتازة", type: "complaint", hidden: false, createdAt: new Date("2026-05-20") },
-  { id: "r4", customerName: "سارة أحمد", rating: 5, comment: "أتمنى إضافة المزيد من منتجات الكمبيوتر", type: "suggestion", hidden: false, createdAt: new Date("2026-06-01") },
+  
 ];
 
 const initialStaff: StaffUser[] = [
-  { id: "s1", username: "admin", password: "admin123", nameAr: "مدير النظام", nameEn: "System Admin", role: "admin", active: true },
-  { id: "s2", username: "cs1", password: "cs123", nameAr: "نور محمد", nameEn: "Nour Mohammed", role: "customer_service", active: true },
-  { id: "s3", username: "wh1", password: "wh123", nameAr: "حسام خالد", nameEn: "Hossam Khaled", role: "warehouse", active: true },
-  { id: "s4", username: "del1", password: "del123", nameAr: "أحمد محمد", nameEn: "Ahmed Mohammed", role: "delivery", active: true },
+  
 ];
 
 interface AppContextType {

@@ -82,26 +82,7 @@ export function LoginPage() {
             </button>
           </form>
         </div>
-
-        {/* Demo accounts */}
-        <div className="bg-white rounded-2xl border border-border p-5">
-          <div className="text-muted-foreground mb-3" style={{ fontSize: "13px", fontWeight: 600 }}>
-            {t("حسابات تجريبية:", "Demo Accounts:")}
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            {demoAccounts.map(acc => (
-              <button
-                key={acc.username}
-                onClick={() => { setUsername(acc.username); setPassword(acc.password); }}
-                className="p-3 rounded-lg border border-border hover:bg-secondary transition-colors text-left"
-                style={{ fontSize: "12px" }}
-              >
-                <div style={{ fontWeight: 600, color: "var(--primary)" }}>{acc.role}</div>
-                <div className="text-muted-foreground">{acc.username} / {acc.password}</div>
-              </button>
-            ))}
-          </div>
-        </div>
+        <div className="bg-white rounded-2xl shadow-lg border border-border p-6"></div>       
       </div>
     </div>
   );
