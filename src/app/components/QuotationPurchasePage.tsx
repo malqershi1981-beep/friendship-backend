@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Search, FileText, ShoppingCart, CheckCircle, Building2, Banknote, Mail } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import type { Order } from "../context/AppContext";
-import { createOrder } from "../lib/api";
+import { createOrder, updateOrder } from "../lib/api";
 import { jsPDF } from "jspdf";
 import { drawPdfText, drawPdfLabelValue } from "../lib/pdfUtils";
 import { CompanyLogo } from "./CompanyLogo";
@@ -79,12 +79,11 @@ export function QuotationPurchasePage() {
       setOrders(prev => [...prev, created]);
       setCreatedOrder(created);
       if (customerEmail) setEmailSent(true);
-       // 2️⃣ تحديث عرض السعر الأصلي إلى closed
-    await fetch(`/api/orders/${foundQuotation.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "closed" }),
-    });
+
+      // 2️⃣ تحديث عرض السعر الأصلي إلى closed
+      const updatedQuotation = await updateOrder(foundQuotation.id, { status: "closed" });
+      setOrders(prev => prev.map(order => order.id === updatedQuotation.id ? updatedQuotation : order));
+
       setStep("success");
     } catch (error) {
       console.error("Failed to create purchase order:", error);
