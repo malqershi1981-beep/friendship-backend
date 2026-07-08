@@ -32,17 +32,21 @@ await (async () => {
       const authUser = process.env.SMTP_USER;
       const authPass = process.env.SMTP_PASS;
       const transporterConfig = {
-        host: smtpHost,
-        port: smtpPort,
-        secure,
-      };
-      if (authUser && authPass) transporterConfig.auth = { user: authUser, pass: authPass };
-      mailTransporter = nodemailer.createTransport(transporterConfig);
-      // verify connection
-      //await mailTransporter.verify();
-      mailTransporter = nodemailer.createTransport(transporterConfig);
+  host: smtpHost,
+  port: smtpPort,
+  secure,
+};
 
-      console.log("SMTP transporter created");
+if (authUser && authPass) {
+  transporterConfig.auth = {
+    user: authUser,
+    pass: authPass,
+  };
+}
+
+mailTransporter = nodemailer.createTransport(transporterConfig);
+
+console.log("SMTP transporter created");
       console.log("SMTP transporter ready");
     } else {
       const testAccount = await nodemailer.createTestAccount();
@@ -560,17 +564,58 @@ console.log("Order ID:", order.id);
 console.log("To:", to);
 console.log("Subject:", subject);
 console.log("From:", from);
-
-const info = await mailTransporter.sendMail({
-  from,
-  to,
-  subject,
-  text,
-  html,
-  replyTo: process.env.SMTP_USER || from,
+console.log("Transport config:", {
+  host: smtpHost,
+  port: smtpPort,
+  secure,
+  user: authUser,
 });
+console.log("Transport options:", mailTransporter.options);
+try {
+  console.log("=== START SENDING EMAIL ===");
+  console.log("To:", to);
 
-console.log("=== EMAIL SENT SUCCESSFULLY ===");
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "content-type": "application/json",
+      "api-key": process.env.BREVO_API_KEY,
+    },
+    body: JSON.stringify({
+      sender: {
+        name: "FriendShip Trading",
+        email: "malqershi1981@gmail.com"
+      },
+      to: [
+        {
+          email: to
+        }
+      ],
+      subject: subject,
+      htmlContent: html,
+      textContent: text,
+      replyTo: {
+        email: "malqershi1981@gmail.com",
+        name: "FriendShip Trading"
+      }
+    })
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    console.error("Brevo API Error:", result);
+    throw new Error(JSON.stringify(result));
+  }
+
+  console.log("=== EMAIL SENT SUCCESSFULLY ===");
+  console.log("Brevo Response:", result);
+
+} catch (err) {
+  console.error("Failed to send email:", err);
+}
+
 
 // Log transport response details for debugging
 try {
